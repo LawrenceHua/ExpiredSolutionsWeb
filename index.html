@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expired Solutions | AI-Powered Freshness Management</title>
+    <meta name="description" content="Stop losing to shrinkage. AI-powered produce freshness tracking for grocery retailers and shoppers. Reduce food waste by 30%.">
+    <meta property="og:title" content="Expired Solutions - AI Freshness Scanner">
+    <meta property="og:description" content="Never waste produce again. AI-powered freshness analysis for smart shopping.">
+    <meta property="og:image" content="/og-image.png">
+    <meta property="og:url" content="https://expiredsolutions.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#22c55e',
+                            dark: '#0a1f0a',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: radial-gradient(ellipse at top left, #1a3a1a 0%, #0f1f12 30%, #0a0f0a 70%, #050805 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-gradient {
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .phone-frame {
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border-radius: 3rem;
+            padding: 0.75rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .phone-screen {
+            border-radius: 2.5rem;
+            overflow: hidden;
+        }
+        .phone-notch {
+            position: absolute;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6rem;
+            height: 1.75rem;
+            background: #000;
+            border-radius: 1rem;
+            z-index: 10;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        html { scroll-behavior: smooth; }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="gradient-bg text-white font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <a href="/" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/20">
+                        <span class="text-white font-bold text-xl">E</span>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight">Expired Solutions</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#problem" class="text-sm font-medium text-gray-300 hover:text-white transition">Problem</a>
+                    <a href="#solution" class="text-sm font-medium text-gray-300 hover:text-white transition">Solution</a>
+                    <a href="#shoppers" class="text-sm font-medium text-gray-300 hover:text-white transition">For Shoppers</a>
+                    <a href="#about" class="text-sm font-medium text-gray-300 hover:text-white transition">About</a>
+                    <a href="#contact" class="bg-green-600 hover:bg-green-500 text-white px-5 py-2 rounded-full text-sm font-semibold transition shadow-lg shadow-green-500/20">Contact Us</a>
+                </div>
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black/90 border-t border-white/5">
+            <div class="px-4 py-4 space-y-2">
+                <a href="#problem" class="block py-2 text-gray-300">Problem</a>
+                <a href="#solution" class="block py-2 text-gray-300">Solution</a>
+                <a href="#shoppers" class="block py-2 text-gray-300">For Shoppers</a>
+                <a href="#about" class="block py-2 text-gray-300">About</a>
+                <a href="#contact" class="block py-2 text-green-400">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 pb-16 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <p class="text-lg md:text-xl text-gray-300 mb-4">Stop losing to shrinkage.</p>
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-8">
+                        <span class="gradient-text italic">Start winning<br>with AI.</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed max-w-xl">
+                        We help grocery retailers cut waste, automate markdowns, and turn perishables into profit.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#solution" class="bg-white text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition text-center shadow-xl">
+                            Learn More
+                        </a>
+                        <a href="#contact" class="border border-green-500/50 text-green-400 hover:bg-green-500/10 px-8 py-4 rounded-full font-semibold text-lg transition text-center">
+                            Request a Demo
+                        </a>
+                    </div>
+                    <div class="mt-10 flex items-center gap-8 text-gray-400 text-sm">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            99% Accuracy
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                            30% Waste Reduction
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Phone Mockup -->
+                <div class="relative flex justify-center lg:justify-end">
+                    <div class="phone-frame w-72 md:w-80 animate-float">
+                        <div class="phone-screen relative bg-gray-900 aspect-[9/19.5]">
+                            <div class="phone-notch"></div>
+                            <img src="/screenshots/hero-scan.png" alt="Xpired App Scanning" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-green-900/50 to-slate-900 flex items-center justify-center\'><div class=\'text-center p-8\'><div class=\'w-20 h-20 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center\'><svg class=\'w-10 h-10 text-green-400\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z\'/><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M15 13a3 3 0 11-6 0 3 3 0 016 0z\'/></svg></div><p class=\'text-green-400 font-semibold\'>AI Scanning</p><p class=\'text-gray-500 text-sm mt-2\'>Point camera at produce</p></div></div>'">
+                            
+                            <!-- Floating result card -->
+                            <div class="absolute bottom-8 left-4 right-4 bg-white/95 backdrop-blur rounded-2xl p-4 shadow-2xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">92%</div>
+                                    <div>
+                                        <p class="font-bold text-gray-900">Granny Smith Apple</p>
+                                        <p class="text-sm text-green-600 font-medium">Excellent • 7 days left</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative elements -->
+                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-green-400 font-semibold mb-2">THE PROBLEM</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Food Waste is a <span class="gradient-text">$18 Billion</span> Problem</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Every year, grocery retailers lose billions to spoilage. Manual inspections can't keep up.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card rounded-3xl p-8 hover:border-green-500/30 transition-all duration-300">
+                    <div class="text-5xl font-bold text-green-400 mb-4">30%</div>
+                    <h3 class="text-xl font-bold mb-3">Fresh Produce Wasted</h3>
+                    <p class="text-gray-400">Nearly a third of all fresh produce in grocery stores ends up as waste due to poor freshness tracking.</p>
+                </div>
+                <div class="glass-card rounded-3xl p-8 hover:border-green-500/30 transition-all duration-300">
+                    <div class="text-5xl font-bold text-green-400 mb-4">5-7%</div>
+                    <h3 class="text-xl font-bold mb-3">Shrink Rate</h3>
+                    <p class="text-gray-400">Average grocery shrinkage directly eats into already thin 1-3% profit margins.</p>
+                </div>
+                <div class="glass-card rounded-3xl p-8 hover:border-green-500/30 transition-all duration-300">
+                    <div class="text-5xl font-bold text-green-400 mb-4">4hrs</div>
+                    <h3 class="text-xl font-bold mb-3">Daily Manual Checks</h3>
+                    <p class="text-gray-400">Store employees spend hours on subjective, error-prone manual produce inspections.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-24 bg-gradient-to-b from-transparent via-green-950/20 to-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-green-400 font-semibold mb-2">OUR SOLUTION</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4"><span class="gradient-text italic">AI-Powered</span> Perishables Management</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Two products, one mission: eliminate food waste with computer vision and machine learning.</p>
+            </div>
+
+            <!-- Video Section -->
+            <div class="relative aspect-video max-w-4xl mx-auto mb-20 rounded-3xl overflow-hidden glass-card">
+                <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-green-900/30 to-slate-900/50">
+                    <div class="text-center">
+                        <p class="text-4xl md:text-5xl font-bold mb-2">Expired Solutions</p>
+                        <p class="text-2xl md:text-3xl text-gray-300">Xpired For Merchants</p>
+                    </div>
+                </div>
+                <button class="absolute inset-0 m-auto w-20 h-20 bg-green-500 hover:bg-green-400 rounded-full flex items-center justify-center transition shadow-2xl shadow-green-500/30 group">
+                    <svg class="w-8 h-8 text-white ml-1 group-hover:scale-110 transition" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Product Cards -->
+            <div class="space-y-8">
+                <!-- Merchants Card -->
+                <div class="card-gradient rounded-3xl p-8 md:p-12 text-gray-900">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
+                        <div class="flex items-center gap-4">
+                            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg">
+                                <span class="text-white font-bold text-2xl">X</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">Xpired</h3>
+                                <p class="text-xl text-green-600 font-semibold">For Merchants</p>
+                            </div>
+                        </div>
+                        <span class="inline-flex items-center px-4 py-2 rounded-full bg-green-600 text-white text-sm font-semibold w-fit shadow-lg">
+                            ✓ Pilot-Ready
+                        </span>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-green-700 font-bold mb-1">Automated Freshness Tracking</h4>
+                                <p class="text-gray-600 text-sm">Assess produce quality with a single scan—no manual inspections needed.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-green-700 font-bold mb-1">Dynamic Workflows</h4>
+                                <p class="text-gray-600 text-sm">Automatically generate tasks like markdowns, conversions, and waste handling.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-green-700 font-bold mb-1">Shrink Reduction Engine</h4>
+                                <p class="text-gray-600 text-sm">Catch spoilage risks early and take action before they turn into losses.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-green-700 font-bold mb-1">Analytics Dashboard</h4>
+                                <p class="text-gray-600 text-sm">Monitor markdown performance, freshness trends, and savings—all in one place.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shoppers Section -->
+    <section id="shoppers" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-blue-400 font-semibold mb-2">FOR CONSUMERS</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Never Waste Food <span class="text-blue-400">Again</span></h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">Download the app and start scanning. Know exactly what you're buying.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Features -->
+                <div class="space-y-8">
+                    <div class="card-gradient rounded-3xl p-8 text-gray-900">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-blue-700 font-bold text-lg mb-2">AI Freshness Scanner</h4>
+                                <p class="text-gray-600">Point your camera at any produce and get an instant 0-100% freshness score with our dual-model AI. Works with 77+ produce types.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-gradient rounded-3xl p-8 text-gray-900">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-blue-700 font-bold text-lg mb-2">Smart Inventory Tracking</h4>
+                                <p class="text-gray-600">Track your fridge contents and get push notifications before items expire. Never let good food go bad.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-gradient rounded-3xl p-8 text-gray-900">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-blue-700 font-bold text-lg mb-2">Diet Compatibility</h4>
+                                <p class="text-gray-600">Set your preferences (Vegan, Keto, Gluten-Free) and instantly see what works for your lifestyle.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App Store Button -->
+                    <a href="https://apps.apple.com/app/xpired-for-shoppers" class="inline-flex items-center gap-4 bg-black text-white px-8 py-4 rounded-2xl hover:bg-gray-800 transition shadow-xl group">
+                        <svg class="w-10 h-10" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        <div class="text-left">
+                            <p class="text-xs text-gray-400">Download on the</p>
+                            <p class="text-xl font-semibold group-hover:text-green-400 transition">App Store</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- App Screenshots -->
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="phone-frame scale-90 origin-top-right">
+                            <div class="phone-screen relative bg-gray-900 aspect-[9/19.5]">
+                                <img src="/screenshots/inventory.png" alt="Inventory Screen" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-blue-900/50 to-slate-900 flex items-center justify-center\'><div class=\'text-center p-4\'><svg class=\'w-12 h-12 mx-auto text-blue-400 mb-2\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2\'/></svg><p class=\'text-blue-400 text-sm\'>Inventory</p></div></div>'">
+                            </div>
+                        </div>
+                        <div class="phone-frame scale-90 origin-top-left mt-12">
+                            <div class="phone-screen relative bg-gray-900 aspect-[9/19.5]">
+                                <img src="/screenshots/detail.png" alt="Detail Screen" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-green-900/50 to-slate-900 flex items-center justify-center\'><div class=\'text-center p-4\'><svg class=\'w-12 h-12 mx-auto text-green-400 mb-2\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'2\' d=\'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z\'/></svg><p class=\'text-green-400 text-sm\'>92% Fresh</p></div></div>'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-24 bg-gradient-to-b from-transparent via-slate-900/50 to-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-green-400 font-semibold mb-2">HOW IT WORKS</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Three Steps to <span class="gradient-text">Zero Waste</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-green-500/30">1</div>
+                    <h3 class="text-xl font-bold mb-3">Capture</h3>
+                    <p class="text-gray-400">Point your camera at any produce. Our hover mode gives instant quick-looks as you shop.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-green-500/30">2</div>
+                    <h3 class="text-xl font-bold mb-3">Analyze</h3>
+                    <p class="text-gray-400">Our dual neural network identifies the produce (99% accuracy) and assesses freshness in milliseconds.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full bg-green-500 text-white flex items-center justify-center text-2xl font-bold mx-auto mb-6 shadow-lg shadow-green-500/30">3</div>
+                    <h3 class="text-xl font-bold mb-3">Track</h3>
+                    <p class="text-gray-400">Add to your inventory. Get storage tips and notifications before items expire.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Milestones -->
+    <section id="about" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="text-green-400 font-semibold mb-2">OUR JOURNEY</p>
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Backed by Innovation</h2>
+                <p class="text-gray-400 text-lg">From university research to retail floors</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card-gradient rounded-3xl p-8 text-gray-900 text-center hover:scale-105 transition-transform">
+                    <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-green-600 font-bold text-xl">GSF</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2"><span class="text-green-600">Receiver</span> – Spring 2025</h3>
+                    <p class="text-gray-600">Bruce S. Gebhardt Sandbox Fund</p>
+                </div>
+                <div class="card-gradient rounded-3xl p-8 text-gray-900 text-center hover:scale-105 transition-transform">
+                    <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-red-600 font-bold text-lg">🦅</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2"><span class="text-green-600">On the Shelf</span> – Summer 2025</h3>
+                    <p class="text-gray-600">Pilot Launch at Giant Eagle Stores</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback CTA -->
+    <section class="py-16 bg-gradient-to-r from-green-600 to-green-500">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Help Us Build Something Better</h2>
+            <p class="text-green-100 text-lg mb-8">We're constantly improving based on user feedback. Tell us what features matter to you.</p>
+            <button onclick="openFeedbackModal()" class="bg-white text-green-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-green-50 transition shadow-xl">
+                Share Your Feedback
+            </button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <p class="text-green-400 font-semibold mb-2">GET IN TOUCH</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Save Millions?</h2>
+                    <p class="text-gray-400 text-lg">Let's talk about how Expired Solutions can transform your perishables strategy.</p>
+                </div>
+                
+                <form id="contact-form" class="space-y-6" onsubmit="handleContactSubmit(event)">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                        <input type="text" name="name" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                        <input type="email" name="email" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Company (Optional)</label>
+                        <input type="text" name="company" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                        <textarea name="message" rows="4" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none transition"></textarea>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <input type="checkbox" name="newsletter" id="newsletter" class="w-5 h-5 rounded border-gray-600 bg-white/5 text-green-500 focus:ring-green-500">
+                        <label for="newsletter" class="text-gray-400 text-sm">Subscribe to product updates and news</label>
+                    </div>
+                    <button type="submit" id="contact-submit" class="w-full bg-green-500 hover:bg-green-400 text-white py-4 rounded-xl font-semibold text-lg transition shadow-lg shadow-green-500/20">
+                        Send Message
+                    </button>
+                    <p id="form-status" class="text-center text-sm hidden"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">E</span>
+                        </div>
+                        <span class="text-xl font-bold">Expired Solutions</span>
+                    </div>
+                    <p class="text-gray-500 max-w-sm mb-4">
+                        AI-powered freshness management for grocery retailers and consumers. Reducing food waste, one scan at a time.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://linkedin.com/company/expired-solutions" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://twitter.com/expiredsolutions" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="https://instagram.com/expiredsolutions" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Product</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#solution" class="hover:text-green-400 transition">For Merchants</a></li>
+                        <li><a href="#shoppers" class="hover:text-green-400 transition">For Shoppers</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">Pricing</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">API Docs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="https://lively-forest-06c6b730f.3.azurestaticapps.net/privacy.html" class="hover:text-green-400 transition">Privacy Policy</a></li>
+                        <li><a href="https://lively-forest-06c6b730f.3.azurestaticapps.net/terms.html" class="hover:text-green-400 transition">Terms of Service</a></li>
+                        <li><a href="https://lively-forest-06c6b730f.3.azurestaticapps.net/support.html" class="hover:text-green-400 transition">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center text-gray-500 text-sm">
+                © 2025 Expired Solutions, LLC. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeFeedbackModal()"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-4">
+            <div class="bg-slate-900 rounded-3xl p-8 border border-white/10 shadow-2xl">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold">Share Feedback</h3>
+                    <button onclick="closeFeedbackModal()" class="text-gray-400 hover:text-white">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                
+                <form id="feedback-form" onsubmit="handleFeedbackSubmit(event)">
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-300 mb-3">What's this about?</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <button type="button" onclick="selectCategory(this, 'feature')" class="category-btn p-3 rounded-xl border border-white/10 hover:border-green-500/50 transition text-left">
+                                <span class="text-2xl mb-1 block">💡</span>
+                                <span class="text-sm font-medium">Feature Request</span>
+                            </button>
+                            <button type="button" onclick="selectCategory(this, 'bug')" class="category-btn p-3 rounded-xl border border-white/10 hover:border-green-500/50 transition text-left">
+                                <span class="text-2xl mb-1 block">🐛</span>
+                                <span class="text-sm font-medium">Bug Report</span>
+                            </button>
+                            <button type="button" onclick="selectCategory(this, 'question')" class="category-btn p-3 rounded-xl border border-white/10 hover:border-green-500/50 transition text-left">
+                                <span class="text-2xl mb-1 block">❓</span>
+                                <span class="text-sm font-medium">Question</span>
+                            </button>
+                            <button type="button" onclick="selectCategory(this, 'other')" class="category-btn p-3 rounded-xl border border-white/10 hover:border-green-500/50 transition text-left">
+                                <span class="text-2xl mb-1 block">💬</span>
+                                <span class="text-sm font-medium">Other</span>
+                            </button>
+                        </div>
+                        <input type="hidden" name="category" id="feedback-category" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Your feedback</label>
+                        <textarea name="message" rows="4" required class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 resize-none" placeholder="Tell us what's on your mind..."></textarea>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-300 mb-2">Email (optional)</label>
+                        <input type="email" name="email" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="For follow-up">
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-green-500 hover:bg-green-400 text-white py-4 rounded-xl font-semibold transition">
+                        Submit Feedback
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Feedback modal
+        function openFeedbackModal() {
+            document.getElementById('feedback-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeFeedbackModal() {
+            document.getElementById('feedback-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        
+        let selectedCategory = '';
+        function selectCategory(btn, category) {
+            document.querySelectorAll('.category-btn').forEach(b => {
+                b.classList.remove('border-green-500', 'bg-green-500/10');
+            });
+            btn.classList.add('border-green-500', 'bg-green-500/10');
+            document.getElementById('feedback-category').value = category;
+            selectedCategory = category;
+        }
+
+        // Form submissions
+        async function handleContactSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn = document.getElementById('contact-submit');
+            const status = document.getElementById('form-status');
+            
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                // Send to your backend API
+                const response = await fetch('https://expiredsolutions-api-dcaqbggchqhrhkfe.eastus-01.azurewebsites.net/api/v1/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        category: 'contact_form',
+                        message: `Name: ${data.name}\nCompany: ${data.company || 'N/A'}\nEmail: ${data.email}\n\n${data.message}`,
+                        rating: 5,
+                        app_version: 'website',
+                        device_model: navigator.userAgent,
+                        ios_version: 'web'
+                    })
+                });
+                
+                if (response.ok) {
+                    status.textContent = '✓ Message sent! We\'ll be in touch soon.';
+                    status.className = 'text-center text-sm text-green-400';
+                    form.reset();
+                } else {
+                    throw new Error('Failed');
+                }
+            } catch (err) {
+                status.textContent = 'Failed to send. Please email us at support@expiredsolutions.com';
+                status.className = 'text-center text-sm text-red-400';
+            }
+            
+            status.classList.remove('hidden');
+            btn.disabled = false;
+            btn.textContent = 'Send Message';
+        }
+        
+        async function handleFeedbackSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            if (!data.category) {
+                alert('Please select a category');
+                return;
+            }
+            
+            try {
+                await fetch('https://expiredsolutions-api-dcaqbggchqhrhkfe.eastus-01.azurewebsites.net/api/v1/feedback', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        category: data.category,
+                        message: `${data.message}\n\nEmail: ${data.email || 'Not provided'}`,
+                        rating: 5,
+                        app_version: 'website',
+                        device_model: navigator.userAgent,
+                        ios_version: 'web'
+                    })
+                });
+                
+                alert('Thank you for your feedback!');
+                closeFeedbackModal();
+                form.reset();
+                document.querySelectorAll('.category-btn').forEach(b => {
+                    b.classList.remove('border-green-500', 'bg-green-500/10');
+                });
+            } catch (err) {
+                alert('Failed to submit. Please try again.');
+            }
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
