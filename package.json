@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Expired Solutions - AI-Powered Freshness Management",
   "scripts": {
-    "dev": "npx serve .",
+    "dev": "npx serve public",
     "build": "echo 'Static site - no build needed'",
-    "start": "npx serve ."
+    "start": "npx serve public"
   },
   "keywords": ["produce", "freshness", "ai", "food-waste"],
   "author": "Expired Solutions, LLC",

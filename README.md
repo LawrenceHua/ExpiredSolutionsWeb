@@ -36,14 +36,12 @@ vercel --prod
 
 ```
 ExpiredSolutionsWeb/
-├── index.html          # Main website (single page)
+├── public/             # Vercel output directory
+│   ├── index.html      # Main website (single page)
+│   ├── favicon.svg     # Site favicon
+│   └── screenshots/    # Website images (logo, team, awards, mock screens)
 ├── package.json        # Project metadata
 ├── vercel.json         # Vercel configuration
-├── favicon.svg         # Site favicon
-├── screenshots/        # App screenshots for website
-│   ├── hero-scan.png   # Hero section phone mockup
-│   ├── inventory.png   # Inventory screen
-│   └── detail.png      # Detail/result screen
 └── README.md           # This file
 ```
 
@@ -106,10 +104,10 @@ Replace placeholder images in `/screenshots/`:
 
 ```bash
 # Option 1: Python
-python3 -m http.server 3000
+cd public && python3 -m http.server 3000
 
 # Option 2: Node
-npx serve .
+npx serve public
 
 # Then open http://localhost:3000
 ```
